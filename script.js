@@ -158,8 +158,8 @@ function rotate(degree, type) {
       }
 }
 
-function circleBorderWithDegree(deg, type) {
-      if (+deg === 0 && type === "p2") {
+function circleBorderWithDegree(degree, type) {
+      if (+degree === 0 && type === "p2") {
             const filtered = getElementFilteredWithDeg(-180, "p1");
             if (filtered) {
                   animateLabel(+filtered.textContent); changeBorderColor(filtered);
@@ -169,7 +169,7 @@ function circleBorderWithDegree(deg, type) {
             }
 
       } else {
-            const filtered = getElementFilteredWithDeg(deg, type);
+            const filtered = getElementFilteredWithDeg(degree, type);
             if (filtered) {
                   animateLabel(+filtered.textContent); changeBorderColor(filtered);
             }
@@ -180,18 +180,18 @@ function circleBorderWithDegree(deg, type) {
       }
 }
 
-function setProperty(el, prop, val) {
-      el.style.setProperty(prop, val);
+function setProperty(element, prop, value) {
+      element.style.setProperty(prop, value);
 }
 
-function changeBorderColor(el) {
-      [...circles].map(v => v.textContent < el.textContent
-            ? setProperty(v, "border-color", "var(--light-blue)")
-            : setProperty(v, "border-color", "#CCCCCC"));
+function changeBorderColor(element) {
+      [...circles].map(circle => circle.textContent < element.textContent
+            ? setProperty(circle, "border-color", "var(--light-blue)")
+            : setProperty(circle, "border-color", "#CCCCCC"));
 }
 
 function getElementFilteredWithDeg(deg, type) {
-      const fn = v => (+v.dataset.degree === deg && v.dataset.type === type);
+      const fn = element => (+element.dataset.degree === deg && element.dataset.type === type);
       const filtered = [...circles].filter(fn);
       return filtered[0];
 }
