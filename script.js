@@ -1,8 +1,12 @@
 
-const circle = document.querySelectorAll(".circle");
+const circles = document.querySelectorAll(".circle");
 const tangent = document.querySelector(".tangent");
+const labelInsideCircle = document.querySelector("._label");
+const labelTitle = document.querySelector(".lb-title");
+const labelDescription = document.querySelector(".lb-desc");
+const labelPuller=document.querySelector(".label-pull-down");
 
-[...circle].map((el) => addListener(el, selectSmallCircleWithNumber));
+[...circles].map((el) => addListener(el, selectSmallCircleWithNumber));
 
 document.addEventListener("keyup", handleKeyUp, true);
 
@@ -39,7 +43,6 @@ function increaseDegree(v) {
             if (rotation.p2degree === -135) {
                   rotate(-180, "p2");
                   circleBorderWithDegree(-180, "p2");
-                  pushLabelWithDeg(-180, "p2");
                   let pies = document.querySelectorAll(".pie");
                   setTimeout(() => {
                         root.style.setProperty('--p1-degree', '-360deg');
@@ -53,7 +56,6 @@ function increaseDegree(v) {
                               pie.style.setProperty("transition-duration", "0ms")
                         })
                         circleBorderWithDegree(-45, "p1");
-                        pushLabelWithDeg(-45, "p1");
                   }, 190)
 
                   setTimeout(() => {
@@ -76,14 +78,12 @@ function increaseDegree(v) {
                   rotation.p2degree += v;
                   rotate(rotation.p2degree, "p2");
                   circleBorderWithDegree(rotation.p2degree, "p2");
-                  pushLabelWithDeg(rotation.p2degree, "p2");
             }
       } else {
             //rotate p1
             rotation.p1degree += v;
             rotate(rotation.p1degree, "p1");
             circleBorderWithDegree(rotation.p1degree, "p1");
-            pushLabelWithDeg(rotation.p1degree, "p1");
       }
 }
 
@@ -93,7 +93,6 @@ function decreaseDegree(v) {
             rotation.p1degree += v
             rotate(rotation.p1degree, "p1");
             circleBorderWithDegree(rotation.p1degree, "p1");
-            pushLabelWithDeg(rotation.p1degree, "p1");
 
             if (rotation.p1degree === 0) {
                   setProperty(tangent, "border-color", "#CCCCCC");
@@ -103,7 +102,6 @@ function decreaseDegree(v) {
             rotation.p2degree += v;
             rotate(rotation.p2degree, "p2");
             circleBorderWithDegree(rotation.p2degree, "p2");
-            pushLabelWithDeg(rotation.p2degree, "p2");
       }
 }
 
@@ -112,7 +110,8 @@ function selectSmallCircleWithNumber(e) {
       const type = e.target.dataset.type;
       rotate(degree, type);
       changeBorderColor(e.target);
-      pushLabel(e.target.textContent);
+
+      animateLabel(+e.target.textContent);
 }
 
 function rotate(degree, type) {
@@ -162,10 +161,22 @@ function rotate(degree, type) {
 function circleBorderWithDegree(deg, type) {
       if (+deg === 0 && type === "p2") {
             const filtered = getElementFilteredWithDeg(-180, "p1");
-            filtered && changeBorderColor(filtered);
+            if (filtered) {
+                  animateLabel(+filtered.textContent); changeBorderColor(filtered);
+            }
+            else {
+                  animateLabel(0)
+            }
+
       } else {
             const filtered = getElementFilteredWithDeg(deg, type);
-            filtered && changeBorderColor(filtered);
+            if (filtered) {
+                  animateLabel(+filtered.textContent); changeBorderColor(filtered);
+            }
+            else {
+                  animateLabel(0)
+            }
+
       }
 }
 
@@ -174,27 +185,67 @@ function setProperty(el, prop, val) {
 }
 
 function changeBorderColor(el) {
-      [...circle].map(v => v.textContent < el.textContent
+      [...circles].map(v => v.textContent < el.textContent
             ? setProperty(v, "border-color", "var(--light-blue)")
             : setProperty(v, "border-color", "#CCCCCC"));
 }
 
-function pushLabel(times) {
-      root.style.setProperty('--lb-push-times', `${+times}`);
-}
-
 function getElementFilteredWithDeg(deg, type) {
       const fn = v => (+v.dataset.degree === deg && v.dataset.type === type);
-      const filtered = [...circle].filter(fn);
+      const filtered = [...circles].filter(fn);
       return filtered[0];
 }
 
-function pushLabelWithDeg(deg, type) {
-      if (+deg === 0 && type === "p2") {
-            const el = getElementFilteredWithDeg(-180, "p1");
-            el ? pushLabel(el.textContent) : pushLabel(0);
-      } else {
-            const el = getElementFilteredWithDeg(deg, type);
-            el ? pushLabel(el.textContent) : pushLabel(0);
+function animateLabel(index) {
+      if(index<0 || index>7){
+            return;
       }
+      labelInsideCircle.classList.add("fake-in-label", "pull-down-label");
+      labelPuller.classList.add("pull-down");
+      setTimeout(() => {
+            if(index===0){
+                  labelDescription.classList.add("text-light-blue");
+            }else{
+                  labelDescription.classList.remove("text-light-blue");
+            }
+            labelPuller.classList.remove("pull-down");
+            labelTitle.textContent = labelArray[index]["title"];
+            labelDescription.textContent = labelArray[index]["description"];
+            labelInsideCircle.classList.remove("fake-in-label");
+      }, 500);
 }
+
+var labelArray = [
+      {
+            title: "Use ← & → arrow keys",
+            description: "(or click on the spots to play)"
+      },
+      {
+            title: "Plan Requirements",
+            description: "defining scope, establishing approach, process, standards.",
+      },
+      {
+            title: "Analysis & Design",
+            description: "architecture design, detailed UX/UI design.",
+      },
+      {
+            title: "Development",
+            description: "implementation in sprints, developing potentially shippable products. (increments).",
+      },
+      {
+            title: "Testing",
+            description: "validating user stories, executing regression tests, raising effects.",
+      },
+      {
+            title: "Deployment",
+            description: "preparation a version for the client review.",
+      },
+      {
+            title: "Evaluation",
+            description: "demo of a given version and evualation.",
+      },
+      {
+            title: "Next Iteration",
+            description: "",
+      },
+]
