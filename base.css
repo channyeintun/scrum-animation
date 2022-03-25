@@ -3,13 +3,19 @@
 
       --p1-degree: 0deg;
       --p2-degree: 0deg;
+      
       --mask-bg: white;
       --mask-bd: #CCCCCC;
 
       --h1: 12;
+      /* h1 is z-index for half pie */
       --h2: 10;
+      /* h2 is z-index for half pie */
+
       --m1: 13;
+      /* m1 is z-index for half mask pie*/
       --m2: 11;
+      /* m2 is z-index for half mask pie*/
 
       --cornor-s: 48px;
       --side-s: -20px;

@@ -23,17 +23,17 @@ function handleKeyUp(e) {
       if (e.keyCode == '37') {
             // left arrow
             if (rotation.p1degree + rotation.p2degree) {
-                  decDegree(45);
+                  decreaseDegree(45);
             }
 
       }
       else if (e.keyCode == '39') {
             // right arrow
-            incDegree(-45);
+            increaseDegree(-45);
       }
 }
 
-function incDegree(v) {
+function increaseDegree(v) {
       if (+rotation.p1degree === -180) {
             //rotate p2
             if (rotation.p2degree === -135) {
@@ -87,7 +87,7 @@ function incDegree(v) {
       }
 }
 
-function decDegree(v) {
+function decreaseDegree(v) {
       if (+rotation.p2degree === 0) {
             //rotate p1
             rotation.p1degree += v
@@ -95,7 +95,7 @@ function decDegree(v) {
             circleBorderWithDegree(rotation.p1degree, "p1");
             pushLabelWithDeg(rotation.p1degree, "p1");
 
-            if(rotation.p1degree===0){
+            if (rotation.p1degree === 0) {
                   setProperty(tangent, "border-color", "#CCCCCC");
             }
       } else {
@@ -122,16 +122,16 @@ function rotate(degree, type) {
       if (type === "p1") {
             root.style.setProperty('--p2-degree', '0deg');
             rotation.p2degree = 0;
-            function execute() {
-                  root.style.setProperty('--h1', '12');
-                  root.style.setProperty('--h2', '10');
+            function playZindex() {
+                  root.style.setProperty('--h1', '12'); //h1 is z-index for half pie  
+                  root.style.setProperty('--h2', '10'); //h2 is z-index for another half pie
             }
             if (lastClick = "p2" && degree === "-180") {
                   setTimeout(() => {
-                        execute();
+                        playZindex();
                   }, 200);
             } else {
-                  execute();
+                  playZindex();
             }
             rotation.p1degree = +degree;
             root.style.setProperty('--p1-degree', `${degree}deg`);
@@ -142,17 +142,17 @@ function rotate(degree, type) {
       if (type === "p2") {
             root.style.setProperty('--p1-degree', '-180deg');
             rotation.p1degree = -180;
-            function execute() {
+            function playZindex() {
                   root.style.setProperty('--h1', '99');
                   root.style.setProperty('--h2', '98');
                   rotation.p2degree = +degree;
                   root.style.setProperty('--p2-degree', `${degree}deg`);
             }
             if (lastClick === "p2") {
-                  execute();
+                  playZindex();
             } else {
                   setTimeout(() => {
-                        execute();
+                        playZindex();
                   }, 200);
             }
             lastClick = "p2";
@@ -163,7 +163,7 @@ function circleBorderWithDegree(deg, type) {
       if (+deg === 0 && type === "p2") {
             const filtered = getElementFilteredWithDeg(-180, "p1");
             filtered && changeBorderColor(filtered);
-      }else{
+      } else {
             const filtered = getElementFilteredWithDeg(deg, type);
             filtered && changeBorderColor(filtered);
       }
@@ -193,7 +193,7 @@ function pushLabelWithDeg(deg, type) {
       if (+deg === 0 && type === "p2") {
             const el = getElementFilteredWithDeg(-180, "p1");
             el ? pushLabel(el.textContent) : pushLabel(0);
-      }else{
+      } else {
             const el = getElementFilteredWithDeg(deg, type);
             el ? pushLabel(el.textContent) : pushLabel(0);
       }
