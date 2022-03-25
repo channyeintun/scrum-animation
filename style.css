@@ -1,0 +1,283 @@
+*{
+      box-sizing: border-box;
+}
+
+body{
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow-x: hidden;
+}
+
+.circle-animation-container{
+      margin-left: 45%;
+      /* transform: scale(0.6); you can scale the container to change the circle size. */
+}
+
+.scrum-wrapper {
+      position: relative;
+      width: 450px;
+      height: 450px;
+      border-radius: 50%;
+      border: 2px solid transparent;
+      outline:none;
+      font-weight: 500;
+      font-size: calc(20px * var(--scale));
+      --pie-width:225px;
+}
+
+.over-scrum-wrapper{
+      position: relative;
+      margin-top: calc(30px * var(--scale));
+      margin-left: auto;
+      width: 450px;
+      height: 450px;
+      display:flex;
+      justify-content: center;
+      align-items: center;
+}
+
+.center-mask{
+      width: 99%;
+      height: 99%;
+      border-radius: 50%;
+      background-color: white;
+      z-index: 100;
+      position: absolute;
+      top:50%;
+      left:50%;
+      transform:translate(-50%,-50%)
+}
+
+.pie {
+      width: 50%;
+      height: 100%;
+      position: absolute;
+      transition: transform ease-out 200ms;
+}
+
+.pie1 {
+      top: 0;
+      left: 0;
+      border: 2px solid #02A9F7;
+      border-radius: var(--pie-width) 0 0 var(--pie-width);
+      z-index: var(--h1);
+      transform: rotate(var(--p1-degree));
+      transform-origin: center right;
+      border-right: none !important;
+}
+
+.pie2 {
+      top: 0;
+      right: 0;
+      border: 2px solid #02A9F7;
+      border-radius: 0 var(--pie-width) var(--pie-width) 0;
+      z-index: var(--h2);
+      transform-origin: center left;
+      transform: rotate(var(--p2-degree));
+      border-left: none !important;
+}
+
+.mask1 {
+      top: 0;
+      left: 0;
+      border: 2px solid var(--mask-bd);
+      border-radius: var(--pie-width) 0 0 var(--pie-width);
+      background-color: var(--mask-bg);
+      border-right: none;
+      z-index: var(--m1);
+}
+
+.mask2 {
+      top: 0;
+      right: 0;
+      border: 2px solid var(--mask-bd);
+      background-color: var(--mask-bg);
+      border-radius: 0 var(--pie-width) var(--pie-width) 0;
+      border-left: none;
+      z-index: var(--m2);
+}
+
+.circle {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: white;
+      border: 2px solid #CCCCCC;
+      display: grid;
+      place-items: center;
+      z-index: 101;
+      transition: all ease-in 200ms;
+      cursor: pointer;
+}
+
+.c1 {
+      bottom: var(--cornor-s);
+      right: var(--cornor-s);
+}
+
+.c2 {
+      right: var(--side-s);
+      bottom: 50%;
+      transform: translateY(50%);
+}
+
+.c3 {
+      right: var(--cornor-s);
+      top: var(--cornor-s);
+}
+
+.c4 {
+      top: var(--side-s);
+      left: 50%;
+      transform: translateX(-50%);
+}
+
+.c5 {
+      top: var(--cornor-s);
+      left: var(--cornor-s);
+}
+
+.c6 {
+      top: 50%;
+      left: var(--side-s);
+      transform: translateY(-50%);
+}
+
+.c7 {
+      bottom: var(--cornor-s);
+      left: var(--cornor-s);
+}
+
+.c8{
+      filter: opacity(0);
+}
+
+.start{
+      width: 30px;
+      height: 30px;
+      border:2px solid var(--light-blue);
+      border-radius: 50%;
+      position: absolute;
+      bottom:-15px;
+      left:-512px;
+}
+
+.start-line{
+      width: 480px;
+      height: 0px;
+      border-top:2px solid var(--light-blue);
+      position: absolute;
+      bottom:0;
+      left:-480px;
+      transform: translateY(-83%);
+}
+
+.tangent{
+      width: 225px;
+      height: 0;
+      border-top:2px solid #CCCCCC;
+      position: absolute;
+      bottom:0;
+      left:0;
+      transition: border-color ease-in 200ms;
+      z-index: 15;
+      transform: translateY(-83%);
+}
+
+.d-line{
+      width: 0px;
+      height: 280px;
+      border-left:2px solid #CCCCCC;
+      position: absolute;
+      bottom:-75px;
+      left:0px;
+}
+
+.destination{
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      border:2px solid #CCCCCC;
+      position: absolute;
+      bottom:-125px;
+      left:0px;
+      transform: translateX(-50%);
+      background:center / 30px 50px no-repeat url('https://nexcode.com.mm/img/deli-to-client.svg');
+}
+
+.label{
+      font-weight: 500;
+      font-size: calc(24px * var(--scale));
+      color:black;
+}
+
+.start-label{
+      position: absolute;
+      bottom:25px;
+      left:-512px;
+}
+
+.d-label{
+      position: absolute;
+      bottom:-110px;
+      left:50px;
+}
+
+.lb-wrapper{
+      position: relative;
+      top:50%;
+      left:50%;
+      transform:translate(-50%,-50%);
+      overflow:hidden;
+      z-index: 151;
+      height: 100px;
+      width: 300px;
+}
+
+.lb-lifter{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 55px;
+      position: absolute;
+      top:var(--lb-push);
+      left:0;
+      z-index: 152;
+      transition: all ease-in-out 400ms;
+}
+
+.lb-text{
+      width: 300px;
+      height: 120px;
+      display:flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      gap:10px;
+      font-weight: 500;
+      font-size: 26px;
+      line-height: 36px;
+      border:0;
+}
+
+.lb-text>span{
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 18px;
+      color:#717A85;
+      width: 100%;
+      text-align: center;
+}
+
+.label-0>span{
+    color:var(--light-blue) !important;
+}
+
+@media screen and ( max-width : 1024px) {
+      .over-scrum-wrapper{
+            display: none;
+      }
+}

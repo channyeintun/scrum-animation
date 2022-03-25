@@ -1,0 +1,19 @@
+:root{
+      --light-blue:#02A9F7;
+
+      --p1-degree: 0deg;
+      --p2-degree: 0deg;
+      --mask-bg: white;
+      --mask-bd: #CCCCCC;
+
+      --h1: 12;
+      --h2: 10;
+      --m1: 13;
+      --m2: 11;
+
+      --cornor-s: 48px;
+      --side-s: -20px;
+
+      --lb-push-times:0;
+      --lb-push:calc(-180px * var(--lb-push-times));
+}
