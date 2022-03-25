@@ -23,3 +23,10 @@
       --lb-push-times:0;
       --lb-push:calc(-180px * var(--lb-push-times));
 }
+
+*{
+      padding:0;
+      margin:0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+}
