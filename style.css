@@ -275,9 +275,3 @@ body{
 .label-0>span{
     color:var(--light-blue) !important;
 }
-
-@media screen and ( max-width : 1024px) {
-      .over-scrum-wrapper{
-            display: none;
-      }
-}
