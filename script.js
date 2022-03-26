@@ -212,7 +212,7 @@ function animateLabel(index) {
             labelTitle.textContent = labelArray[index]["title"];
             labelDescription.textContent = labelArray[index]["description"];
             labelInsideCircle.classList.remove("fake-in-label");
-      }, 500);
+      }, 310);
 }
 
 var labelArray = [

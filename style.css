@@ -242,22 +242,22 @@ body{
       gap:10px;
       line-height: 36px;
       border:0;
-      transition: all ease 800ms;
+      transition: all ease 300ms;
 }
 
 .label-pull-down{
       position: absolute;
       bottom: 0;
-      transition: all ease 800ms;
+      transition: all ease 300ms;
 }
 
 .fake-in-label{
-      transition: all ease 400ms;
+      transition: all ease 300ms;
       filter: opacity(0);
 }
 
 .pull-down{
-      transition: all ease 800ms;
+      transition: all ease 300ms;
       bottom: -60%;
 }
 
