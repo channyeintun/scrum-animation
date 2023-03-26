@@ -7,8 +7,10 @@ body{
 }
 
 .circle-animation-container{
-      margin-left: 45%;
-      /* transform: scale(0.6); you can scale the container to change the circle size. */
+      margin-left: calc((var(--start-line-size) + var(--start-circle-size)) * var(--container-scale));
+      margin-right: calc(20px * var(--container-scale));
+      transform: scale(var(--container-scale)); 
+      /* you can scale the container to change the circle size. */
 }
 
 .scrum-wrapper {
@@ -152,8 +154,8 @@ body{
 }
 
 .start{
-      width: 30px;
-      height: 30px;
+      width: var(--start-circle-size);
+      height: var(--start-circle-size);
       border:2px solid var(--light-blue);
       border-radius: 50%;
       position: absolute;
@@ -162,12 +164,12 @@ body{
 }
 
 .start-line{
-      width: 480px;
+      width: var(--start-line-size);
       height: 0px;
       border-top:2px solid var(--light-blue);
       position: absolute;
       bottom:0;
-      left:-480px;
+      left:calc(var(--start-line-size) * -1);
       transform: translateY(-83%);
 }
 
@@ -201,7 +203,7 @@ body{
       bottom:-125px;
       left:0px;
       transform: translateX(-50%);
-      background:center / 30px 50px no-repeat url(./deli-to-client.svg);
+      background:center / 30px 50px no-repeat url(./svg/deli-to-client.svg);
 }
 
 .label{

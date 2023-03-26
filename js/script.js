@@ -1,3 +1,4 @@
+let root = document.documentElement;
 
 const circles = document.querySelectorAll(".circle");
 const tangent = document.querySelector(".tangent");
@@ -8,20 +9,14 @@ const labelPuller=document.querySelector(".label-pull-down");
 
 [...circles].map((el) => addListener(el, selectSmallCircleWithNumber));
 
-document.addEventListener("keyup", handleKeyUp, true);
-
-let root = document.documentElement;
-
-function addListener(el, fn) {
-      el.onclick = fn;
-}
-
 let lastClick = "";
 
 let rotation = {
       p1degree: 0,
       p2degree: 0
 }
+
+document.addEventListener("keyup", handleKeyUp, true);
 
 function handleKeyUp(e) {
       if (e.keyCode == '37') {
@@ -249,3 +244,8 @@ var labelArray = [
             description: "",
       },
 ]
+
+
+function addListener(el, fn) {
+    el.onclick = fn;
+}

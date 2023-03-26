@@ -1,4 +1,5 @@
 :root{
+      --container-scale:1;
       --light-blue:#02A9F7;
 
       --p1-degree: 0deg;
@@ -22,6 +23,10 @@
 
       --lb-push-times:0;
       --lb-push:calc(-180px * var(--lb-push-times));
+
+      --start-line-size:480px;
+
+      --start-circle-size:30px;
 }
 
 *{
