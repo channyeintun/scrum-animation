@@ -1,16 +1,7 @@
 body{
       width: 100vw;
       height: 100vh;
-      display: flex;
-      align-items: center;
-      overflow-x: hidden;
-}
-
-.circle-animation-container{
-      margin-left: calc((var(--start-line-size) + var(--start-circle-size)) * var(--container-scale));
-      margin-right: calc(20px * var(--container-scale));
-      transform: scale(var(--container-scale)); 
-      /* you can scale the container to change the circle size. */
+      align-content: center;
 }
 
 .scrum-wrapper {
@@ -23,17 +14,7 @@ body{
       font-weight: 500;
       font-size: calc(20px * var(--scale));
       --pie-width:225px;
-}
-
-.over-scrum-wrapper{
-      position: relative;
-      margin-top: calc(30px * var(--scale));
-      margin-left: auto;
-      width: 450px;
-      height: 450px;
-      display:flex;
-      justify-content: center;
-      align-items: center;
+      margin-inline:auto;
 }
 
 .center-mask{
@@ -109,6 +90,12 @@ body{
       z-index: 101;
       transition: all ease-in 200ms;
       cursor: pointer;
+}
+
+.c0 {
+      left:50%;
+      bottom:0;
+      transform: translate(-50%,50%);
 }
 
 .c1 {

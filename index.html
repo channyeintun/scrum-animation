@@ -16,42 +16,39 @@
 
 <body>
       <!-- You need to copy from this starting tag to its enclosing tag. -->
-      <div class="circle-animation-container" style="--container-scale:0.7;">
-            <div class="over-scrum-wrapper">
-                  <div class="scrum-wrapper">
-                        <div class="pie pie1"></div>
-                        <div class="pie pie2"></div>
-                        <div class="pie mask1"></div>
-                        <div class="pie mask2"></div>
-                        <div class="circle c1" data-degree="-45" data-type="p1">1</div>
-                        <div class="circle c2" data-degree="-90" data-type="p1">2</div>
-                        <div class="circle c3" data-degree="-135" data-type="p1">3</div>
-                        <div class="circle c4" data-degree="-180" data-type="p1">4</div>
-                        <div class="circle c5" data-degree="-45" data-type="p2">5</div>
-                        <div class="circle c6" data-degree="-90" data-type="p2">6</div>
-                        <div class="circle c7" data-degree="-135" data-type="p2">7</div>
-                        <div class="circle c8" data-degree="-180" data-type="p2">8</div>
+      <div>
+            <style>
+                  @scope {
+                        :scope {
+                              padding-inline:30px;
+                        }
+                  }
+            </style>
+            <div class="scrum-wrapper">
+                  <div class="pie pie1"></div>
+                  <div class="pie pie2"></div>
+                  <div class="pie mask1"></div>
+                  <div class="pie mask2"></div>
+                  <div class="circle c0" data-degree="0" data-type="p1">0</div>
+                  <div class="circle c1" data-degree="-45" data-type="p1">1</div>
+                  <div class="circle c2" data-degree="-90" data-type="p1">2</div>
+                  <div class="circle c3" data-degree="-135" data-type="p1">3</div>
+                  <div class="circle c4" data-degree="-180" data-type="p1">4</div>
+                  <div class="circle c5" data-degree="-45" data-type="p2">5</div>
+                  <div class="circle c6" data-degree="-90" data-type="p2">6</div>
+                  <div class="circle c7" data-degree="-135" data-type="p2">7</div>
+                  <div class="circle c8" data-degree="-180" data-type="p2">8</div>
 
-                        <div class="start"></div>
-                        <div class="d-line"></div>
-                        <div class="destination"></div>
+                  <div class="center-mask"></div>
 
-                        <span class="start-label">Start of the project</span>
-                        <span class="d-label">Delivered to client</span>
-
-                        <div class="center-mask"></div>
-
-                        <div class="lb-wrapper">
-                              <div class="label-pull-down">
-                                    <div class="_label">
-                                          <span class="lb-title">Use ← & → arrow keys</span>
-                                          <span class="lb-desc text-light-blue">(or click on the spots to play)</span>
-                                    </div>
+                  <div class="lb-wrapper">
+                        <div class="label-pull-down">
+                              <div class="_label">
+                                    <span class="lb-title">Use ← & → arrow keys</span>
+                                    <span class="lb-desc text-light-blue">(or click on the spots to play)</span>
                               </div>
                         </div>
                   </div>
-                  <div class="start-line"></div>
-                  <div class="tangent"></div>
             </div>
       </div>
       <script src="./js/script.js"></script>

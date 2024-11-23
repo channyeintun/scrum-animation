@@ -1,7 +1,6 @@
 let root = document.documentElement;
 
 const circles = document.querySelectorAll(".circle");
-const tangent = document.querySelector(".tangent");
 const labelInsideCircle = document.querySelector("._label");
 const labelTitle = document.querySelector(".lb-title");
 const labelDescription = document.querySelector(".lb-desc");
@@ -103,12 +102,6 @@ function selectSmallCircleWithNumber(e) {
 }
 
 function rotate(degree, type) {
-    if (rotation.p1degree === 0) {
-        setProperty(tangent, "border-color", "#CCCCCC");
-    } else {
-        setProperty(tangent, "border-color", "var(--light-blue)");
-    }
-
     if (type === "p1") {
         rotatePie1(degree);
     } else {
